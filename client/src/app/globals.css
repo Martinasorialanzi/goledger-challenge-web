@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    background-color:  #fdf4ec;
+    color: rgba(89,91,141,255);
+}
+
+ *{ 
+     /* color:rgba(89,91,141,255);  */
+    /* background-color: antiquewhite; */
+} 
