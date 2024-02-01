@@ -19,8 +19,8 @@ export const playlistSlices = createApi({
             fields: ["@key", "name", "description", "songs"]
           },
         },
-        providesTags: ['Playlist'],
       }),
+      providesTags: ['Playlist'],
       transformResponse:(response)=>{
         return response.result
         },
@@ -49,11 +49,9 @@ export const playlistSlices = createApi({
         url: `/api/invoke/deleteAsset`,
         method: "DELETE",
         body: {
-          query: {
-            selector: {
+          "key": {
               "@assetType": "playlist",
               "@key": id,
-            },
           },
         },
       }),

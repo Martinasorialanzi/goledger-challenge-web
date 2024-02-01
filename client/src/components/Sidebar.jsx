@@ -50,7 +50,7 @@ const SideMenu = () => {
                   );
                 }}
               >
-                <Sidebar.Item>All Palylists</Sidebar.Item>
+                <Sidebar.Item href="/playlists">All Palylists</Sidebar.Item>
                 { data?.map((data) => {
                     return (
                       <Sidebar.Item href="" key={data.name}>

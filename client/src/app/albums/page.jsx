@@ -18,19 +18,7 @@ const Albums = () => {
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-  const colors = [
-    "bg-gradient-to-r from-indigo-900 via-purple-500 to-lime-500",
-    "bg-gradient-to-r from-indigo-900 via-purple-500 to-green-500",
-    "bg-gradient-to-r from-indigo-900 via-purple-500 to-pink-500",
-    "bg-gradient-to-r from-indigo-900 via-purple-500 to-red-500",
-    "bg-gradient-to-r from-indigo-900 via-purple-500 to-yellow-500",
-    "bg-gradient-to-r from-indigo-900 via-purple-500 to-teal-500",
-  ];
 
-  const getBackgroundColorClass = (index) => {
-    const colorIndex = index % colors.length;
-    return `${colors[colorIndex]}`;
-  };
   const deleteAlbum = useCallback((id) => {
 	Swal.fire({
     title: "Are you sure?",
@@ -45,7 +33,7 @@ const Albums = () => {
       deleteAlbums(id.id);
       Swal.fire({
         icon: "success",
-        title: "Artist Delete!",
+        title: "Album Delete!",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -58,7 +46,7 @@ const Albums = () => {
     <div className="p-3 pb-6 rounded-2xl m-auto">
 
     <div className="absolute top-0 right-0 mt-6 mx-4">
-      <Tooltip content="Add Artist" className="bg-[rgba(89,91,141,255)]">
+      <Tooltip content="Add Album" className="bg-[rgba(89,91,141,255)]">
         < IoIosAddCircleOutline size={50}  />
       </Tooltip>
       </div>
@@ -73,7 +61,7 @@ const Albums = () => {
               >
 
                 <img src="https://i.ibb.co/cFTxfXg/albums.png" bordered rounded  className=" col-span-3 cursor-pointer mx-2 h-[7.8em] w-[7.8em]" 
-                    onClick={()=>{router.push(`/artists/`+ album["@key"])}}/>
+                    onClick={()=>{router.push(`/albums/`+ album["@key"])}}/>
                 
                 <div className=" mx-auto">{album.title}</div>
               </Card>
