@@ -18,7 +18,7 @@ const ArtistsSection = () => {
       {artists?.map((artist)=>(
      
         <Card key={artist['@key']} className="flex flex-col items-center  w-[8em] h-[8em] bg-[rgba(23,23,23,255)] border-[rgba(255,141,65,255)] border-[0.1em] pt-2 border-0 rounded-none ">
-        <Avatar bordered rounded color="purple" size="lg" className=" cursor-pointer mx-2" 
+        <Avatar bordered rounded size="lg" className=" cursor-pointer mx-2" 
                     onClick={()=>{router.push(`/artists/`+ artist["@key"])}}/>
             <div className="text-[0.8em] mx-auto">{artist.name}</div>
           </Card>

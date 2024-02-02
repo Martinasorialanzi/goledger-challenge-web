@@ -62,7 +62,7 @@ const Artists = () => {
                   className="rounded-full flex flex-col items-center m-auto bg-[rgba(39,39,39,255)] border-[rgba(255,141,65,255)] border-[0.1em] pt-2 border-0 rounded-none"
                 >
                   
-                    <Avatar bordered rounded color="purple" size="lg" className=" cursor-pointer mx-2" 
+                    <Avatar bordered rounded  size="lg" className=" cursor-pointer mx-2" 
                     onClick={()=>{router.push(`/artists/`+ artist["@key"])}}/>
                   
                   <div className="text-[0.9em] mx-auto">{artist.name}</div>

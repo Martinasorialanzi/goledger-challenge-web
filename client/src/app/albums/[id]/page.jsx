@@ -13,13 +13,12 @@ const Albums = () => {
   const{data:album,isLoading}= useGetAlbumByIdQuery(albumId)
   if (isLoading) return <div>Loading...</div>;
   const artistId=album.artist["@key"]
-  // const{data:artist,isLoading:artistLoading}=useGetArtistByIdQuery(artistId)
-  //  if (artistLoading) return <div>Loading...</div>;
+
 
   return (
     <>
 
-    <div className='bg-white  rounded p-6 h-full'>
+    <div className='bg-[rgba(39,39,39,255)]  rounded p-6 h-full'>
    <div className='flex'>
 
     <Avatar img="https://i.ibb.co/cFTxfXg/albums.png" size={"xl"} >

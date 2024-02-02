@@ -86,18 +86,18 @@ const App = () => {
     <div className="flex sticky top-0 h-screen">
       <div
         className={` ${
-          open ? "w-30" : "w-20 "
+          open ? "w-50" : "w-20 "
         } bg-[rgba(39,39,39,255)] p-5  pt-8 relative duration-300`}
       >
         <div
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+          className={`absolute cursor-pointer -right-3 top-9 w-7 ml-3-3 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         >
           <IoIosArrowBack color="white" size={"xl"} />
         </div>
 
-        <div className="flex gap-x-4 items-center">
+        <div className="flex gap-x-4 items-center cursor-pointer">
           <IoMusicalNotesSharp size={["3em"]} color="white" onClick={(e)=>{router.push("/")}}  />
           <span className={`${!open && "hidden"} origin-left duration-200`}>
             <h1

@@ -27,9 +27,6 @@ const Artist = () => {
       </div>
     </Avatar>
     </div>
-    {/* <div>
-      <p className="space-y-1 text-[2em] font-medium my-5"> Songs</p>
-    </div> */}
 
     </div>
     </>
