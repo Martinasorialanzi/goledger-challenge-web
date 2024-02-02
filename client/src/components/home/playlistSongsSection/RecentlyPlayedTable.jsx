@@ -19,7 +19,7 @@ const RecentlyPlayedTable = () => {
         <Table hoverable className="bg-[rgba(253,251,249,255)]">
           <Table.Body className="divide-y bg-[rgba(253,251,249,255)] border-gray-700 px-1 ">
             {playlist?.songs?.map((song, index = 0) => (
-              <Table.Row className="bg-[rgba(253,251,249,255)] border-gray-400 dark:bg-gray-800 ">
+              <Table.Row key={song["@key"]} className="bg-[rgba(253,251,249,255)] border-gray-400 dark:bg-gray-800 ">
                 <Table.Cell className="p-4">
                   <p>{index + 1}</p>
                 </Table.Cell>

@@ -50,7 +50,7 @@ const Artists = () => {
 
       <div className="absolute top-0 right-0 mt-6 mx-4">
         <Tooltip content="Add Artist" className="bg-[rgba(89,91,141,255)]">
-          < IoIosAddCircleOutline size={50}  />
+          < IoIosAddCircleOutline size={50} onClick={(e)=>{router.push("/artists/create")}} />
         </Tooltip>
         </div>
         <div className="font-bold m-4 text-[2em] ">Artists</div>
@@ -71,7 +71,7 @@ const Artists = () => {
           
                 <div className="absolute top-0 right-0 mt-2 mr-2">
                   <Dropdown inline className="bg-[rgba(253,244,236,255)] border-[rgba(255,143,71,255)] h-[5em]" >
-                    <Dropdown.Item>Edit</Dropdown.Item>
+                    <Dropdown.Item onClick={(e)=>router.push(`artists/update/`+artist["@key"])}>Update</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => deleteArtist({id:artist["@key"]})} >Delete</Dropdown.Item>
                   </Dropdown>
                 </div>

@@ -21,8 +21,8 @@ export const songSlices = createApi({
             fields:["title","@key","album.@key","artists", "explicit"]
           },
         },
-        providesTags: ['Songs'],
       }),
+      providesTags: ['Songs'],
       transformResponse:(response)=>{
         return response.result
         

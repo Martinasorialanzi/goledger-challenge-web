@@ -38,8 +38,8 @@ export const playlistSlices = createApi({
             fields: ["@key", "name", "description", "songs"]
           },
         },
-        invalidatesTags: ['Playlist'],
       }),
+      invalidatesTags: ['Playlist'],
       transformResponse:(response)=>{
         return response.result[0]
         },

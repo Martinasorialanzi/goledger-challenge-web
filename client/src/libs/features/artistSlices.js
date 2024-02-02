@@ -6,7 +6,6 @@ export const artistSlices = createApi({
     baseUrl: "http://ec2-44-204-53-62.compute-1.amazonaws.com",
   }),
   endpoints: (builder) => ({
-    
     getAllArtists: builder.query({
       query: () => ({
         url: `/api/query/search`,
@@ -16,14 +15,14 @@ export const artistSlices = createApi({
             selector: {
               "@assetType": "artist",
             },
-            fields: ["@key", "name", "about", "@assetType"]
+            fields: ["@key", "name", "about", "@assetType"],
           },
         },
       }),
-      transformResponse:(response)=>{
-        return response.result
+      providesTags: ["Artist"],
+      transformResponse: (response) => {
+        return response.result;
       },
-      providesTags: ['Artist'],
     }),
     getArtists: builder.query({
       query: () => ({
@@ -35,17 +34,17 @@ export const artistSlices = createApi({
               "@assetType": "artist",
             },
             fields: ["@key", "name", "about", "@assetType"],
-            limit:4
+            limit: 4,
           },
         },
-        providesTags: ['Artist'],
       }),
-      transformResponse:(response)=>{
-        return response.result
-        },
+      transformResponse: (response) => {
+        return response.result;
+      },
+      invalidatesTags: ["Artist"],
     }),
     getArtistById: builder.query({
-      query:(id)=>( {
+      query: (id) => ({
         url: `/api/query/search`,
         method: "POST",
         body: {
@@ -54,45 +53,57 @@ export const artistSlices = createApi({
               "@assetType": "artist",
               "@key": id,
             },
-            fields: ["@key", "name", "about", "@assetType"]
+            fields: ["@key", "name", "about", "@assetType"],
           },
         },
       }),
-      transformResponse:(response)=>{
-        return (response.result[0])
+      transformResponse: (response) => {
+        return response.result[0];
       },
-      invalidatesTags: ['Artist'],
+      invalidatesTags: ["Artist"],
     }),
 
     deleteArtist: builder.mutation({
-      query:(id)=>( {
+      query: (id) => ({
         url: `/api/invoke/deleteAsset`,
         method: "DELETE",
         body: {
-            "key": {
-              "@assetType": "artist",
-              "@key": id,
-            },
+          key: {
+            "@assetType": "artist",
+            "@key": id,
+          },
         },
       }),
-      invalidatesTags: ['Artist'],
+      invalidatesTags: ["Artist"],
     }),
     updateArtist: builder.mutation({
-      query:(dataArtist)=>({
+      query: (artistId,nameArtist,aboutArtist) => ({
         url: `/api/invoke/updateAsset`,
         method: "PUT",
-        body: dataArtist,
+        body: {
+          update:
+          {"@assetType":"artist",
+          "@key":artistId,
+          "about":aboutArtist,
+          "name":nameArtist, 
+        }
+        },
       }),
-      invalidatesTags: ['Artist'],
+      invalidatesTags: ["Artist"],
     }),
 
     createArtist: builder.mutation({
-      query: (newArtist)=>({
+      query: (nameArtist,about) => ({
         url: `/api/invoke/createAsset`,
         method: "POST",
-        body: newArtist,
+        body:
+          {"asset":[{
+            "@assetType":"artist",
+            "name":nameArtist, 
+            "about":about}]
+        },
       }),
-      invalidatesTags: ['Artist'],
+      invalidatesTags: ["Artist"],
     }),
   }),
 });
@@ -104,4 +115,4 @@ export const {
   useDeleteArtistMutation,
   useUpdateArtistMutation,
   useCreateArtistMutation,
-} = artistSlices; 
+} = artistSlices;
