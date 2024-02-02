@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Swal from "sweetalert2";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useDeletePlaylistMutation, useGetAllPlaylistsQuery } from "@/libs/features/playlistSlices";
+import { AiOutlinePlaySquare } from "react-icons/ai";
 
 
 
@@ -46,9 +47,6 @@ const Playlists = () => {
     <div className="p-3 pb-6 rounded-2xl m-auto">
 
     <div className="absolute top-0 right-0 mt-6 mx-4">
-      <Tooltip content="Add Playlist" className="bg-[rgba(89,91,141,255)]">
-        < IoIosAddCircleOutline size={50}  />
-      </Tooltip>
       </div>
       <div className="font-bold m-4 text-[2em] ">Playlists</div>
       <div className="flex flex-col gap-3">
@@ -56,20 +54,21 @@ const Playlists = () => {
           {playlists?.map((playlist) => (
             <div key={playlist["@key"]} className="relative">
               <Card
-                className=" border-[0.1em] m-auto border-0 rounded-lg h-[15em] w-[10em] flex flex-col"
+                className=" border-[0.1em] m-auto border-0 rounded-lg h-[15em] w-[12em] bg-[rgba(39,39,39,255)] flex flex-col"
                 
               >
  <div className="flex-5 mt-2">
-                <img src="https://i.ibb.co/cFTxfXg/albums.png" bordered rounded  className="  cursor-pointer m-auto h-[7.8em] w-[7.8em]" 
+ <AiOutlinePlaySquare size={"xxl"}  className=" col-span-3 cursor-pointer mx-2 h-[8em] w-[8em]" 
                     onClick={()=>{router.push(`/playlists/`+ playlist["@key"])}}/>
+
                 </div>
                 <div className=" flex-1 mx-auto font-medium tx-sm justify-right">{playlist.name}</div>
               </Card>
 
         
               <div className="absolute top-0 right-0 mt-2 mr-2">
-                <Dropdown inline className="bg-[rgba(253,244,236,255)] border-[rgba(255,143,71,255)] h-[5em]" >
-                  <Dropdown.Item>Edit</Dropdown.Item>
+                <Dropdown inline className="bg-[rgba(253,244,236,255)] border-[rgba(255,143,71,255)] h-[3em]" >
+                
                   <Dropdown.Item onClick={(e) => deletePlaylist({id:playlist["@key"]})} >Delete</Dropdown.Item>
                 </Dropdown>
               </div>

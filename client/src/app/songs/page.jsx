@@ -43,22 +43,23 @@ const Songs = () => {
 	}, []);
 
   return (
-    <div className="p-3 pb-6 rounded-2xl m-auto">
 
-    <div className="absolute top-0 right-0 mt-6 mx-4">
-      <Tooltip content="Add Artist" className="bg-[rgba(89,91,141,255)]">
+    <div className=' flex justify-center align-center'>
+    <div className='bg-[rgba(39,39,39,255)] rounded p-6  h-full grid justify-center align-center'>
+    {/* <div className="absolute top-0 right-0 mt-6 mx-4">
+      <Tooltip content="Add Song" className="bg-[rgba(89,91,141,255)]">
         < IoIosAddCircleOutline size={50}  />
       </Tooltip>
-      </div>
+      </div> */}
       <div className="font-bold m-4 text-[2em] ">Songs</div>
-      <div className="flex flex-col ">
+      <div className="flex flex-col justify-content-center ">
         <div className="flex flex-wrap gap-3 justify-left p-4">
           {songs?.map((song) => (
             <div key={song["@key"]} className="relative">
                <SongCard key={song['@key']} song={song} />
               <div className="absolute top-0 right-0 mt-2 mr-2">
-                <Dropdown inline className="bg-[rgba(253,244,236,255)] border-[rgba(255,143,71,255)] h-[5em]" >
-                  <Dropdown.Item>Edit</Dropdown.Item>
+                <Dropdown inline className="bg-[rgba(253,244,236,255)] border-[rgba(255,143,71,255)] h-[3em]" >
+                  {/* <Dropdown.Item>Edit</Dropdown.Item> */}
                   <Dropdown.Item onClick={(e) => deleteSong({id:song["@key"]})} >Delete</Dropdown.Item>
                 </Dropdown>
               </div>
@@ -67,6 +68,8 @@ const Songs = () => {
         </div>
       </div>
     </div>
+    </div>
+
   )
 }
 

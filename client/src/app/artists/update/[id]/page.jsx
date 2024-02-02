@@ -56,7 +56,7 @@ const EditArtist = () => {
   return (
     <>
     <div className='grid justify-center align-center'>
-<div className='bg-white  rounded p-6  '>
+<div className='bg-[rgba(39,39,39,255)] rounded p-6  '>
       <div className="font-bold m-4 text-[2em]  ">
         Update Artist
         <p className="font-light text-[0.8em]">{artist.name}</p>
@@ -64,13 +64,13 @@ const EditArtist = () => {
       <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4 w-[40em]" >
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="name" value="Artist name" />
+            <Label htmlFor="name" value="Artist name" color={"white"}/>
           </div>
           <TextInput type="text" defaultValue={artist.name} required shadow />
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="about" value="About" />
+            <Label htmlFor="about" color={"white"} value="About" />
           </div>
           <TextInput
             onChange={(e) => {

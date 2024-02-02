@@ -59,7 +59,7 @@ const Artists = () => {
             {artists?.map((artist) => (
               <div key={artist["@key"]} className="relative">
                 <Card
-                  className="rounded-full flex flex-col items-center m-auto bg-[rgba(253,251,249,255)] border-[rgba(255,141,65,255)] border-[0.1em] pt-2 border-0 rounded-none"
+                  className="rounded-full flex flex-col items-center m-auto bg-[rgba(39,39,39,255)] border-[rgba(255,141,65,255)] border-[0.1em] pt-2 border-0 rounded-none"
                 >
                   
                     <Avatar bordered rounded color="purple" size="lg" className=" cursor-pointer mx-2" 
