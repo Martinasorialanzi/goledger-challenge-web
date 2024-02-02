@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Music streaming app
+This app offers a streaming web interface seamlessly connected to a blockchain application. The platform enables users to effortlessly explore, modify, create, and remove streaming content, encompassing songs, artists, albums, and playlists.
+
+
+## Technologies
+
+- React
+- NextJS
+- Eslint
+- Prettier
+- RTK query
+- Tailwind
+- Flowbite
 
 ## Getting Started
 
