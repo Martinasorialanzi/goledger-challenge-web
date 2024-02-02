@@ -18,18 +18,21 @@ export const songSlices = createApi({
             selector: {
               "@assetType": "song",
             },
-            fields:["title","@key","album.@key","artists.0.@key", "explicit"]
+            fields: [
+              "title",
+              "@key",
+              "album.@key",
+              "artists.0.@key",
+              "explicit",
+            ],
           },
         },
       }),
-      providesTags: ['Songs'],
-      transformResponse:(response)=>{
-        return response.result
-        
-        },
+      providesTags: ["Songs"],
+      transformResponse: (response) => {
+        return response.result;
+      },
     }),
-
-
 
     getSongs: builder.query({
       query: () => ({
@@ -40,21 +43,19 @@ export const songSlices = createApi({
             selector: {
               "@assetType": "song",
             },
-            fields:["title","@key","album.@key","artists", "explicit"],
-            limit:6
+            fields: ["title", "@key", "album.@key", "artists", "explicit"],
+            limit: 6,
           },
         },
       }),
-      providesTags: ['Songs'],
-      transformResponse:(response)=>{
-        return response.result
-        
-        },
+      providesTags: ["Songs"],
+      transformResponse: (response) => {
+        return response.result;
+      },
     }),
 
     getSongById: builder.query({
-      
-      query:(id) =>({
+      query: (id) => ({
         url: `/api/query/search`,
         method: "POST",
         body: {
@@ -63,47 +64,51 @@ export const songSlices = createApi({
               "@assetType": "song",
               "@key": id,
             },
-            fields:["title","@key","album.@key","artists.0.@key", "explicit"]
-          
+            fields: [
+              "title",
+              "@key",
+              "album.@key",
+              "artists.0.@key",
+              "explicit",
+            ],
           },
         },
       }),
-      invalidatesTags: ['Songs'],
-      transformResponse:(response)=>{
-        return response.result[0]
-        
-        },
+      invalidatesTags: ["Songs"],
+      transformResponse: (response) => {
+        return response.result[0];
+      },
     }),
     deleteSong: builder.mutation({
-      query:(id)=>( {
+      query: (id) => ({
         url: `/api/invoke/deleteAsset`,
         method: "DELETE",
         body: {
-          "key": {
-              "@assetType": "song",
-              "@key": id,
+          key: {
+            "@assetType": "song",
+            "@key": id,
           },
         },
       }),
-    
-      invalidatesTags: ['Songs'],
+
+      invalidatesTags: ["Songs"],
     }),
     updateSong: builder.mutation({
-      query:(data)=>( {
+      query: (data) => ({
         url: `/api/invoke/updateAsset`,
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ['Songs'],
+      invalidatesTags: ["Songs"],
     }),
 
     createSong: builder.mutation({
-      query: (newSong)=>( {
+      query: (newSong) => ({
         url: `/api/invoke/createAsset`,
         method: "POST",
         body: newSong,
       }),
-      invalidatesTags: ['Songs'],
+      invalidatesTags: ["Songs"],
     }),
   }),
 });

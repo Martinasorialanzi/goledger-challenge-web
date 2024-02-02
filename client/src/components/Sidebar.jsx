@@ -79,8 +79,7 @@ import { useRouter } from "next/navigation";
 
 const App = () => {
   const [open, setOpen] = useState(true);
-  const router=useRouter()
-
+  const router = useRouter();
 
   return (
     <div className="flex sticky top-0 h-screen">
@@ -98,7 +97,13 @@ const App = () => {
         </div>
 
         <div className="flex gap-x-4 items-center cursor-pointer">
-          <IoMusicalNotesSharp size={["3em"]} color="white" onClick={(e)=>{router.push("/")}}  />
+          <IoMusicalNotesSharp
+            size={["3em"]}
+            color="white"
+            onClick={(e) => {
+              router.push("/");
+            }}
+          />
           <span className={`${!open && "hidden"} origin-left duration-200`}>
             <h1
               className={`text-white origin-left font-medium text-xl ml-3 duration-200 ${
@@ -112,7 +117,9 @@ const App = () => {
         <ul className="pt-6">
           <li
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4`}
-            onClick={(e)=>{router.push("/artists")}} 
+            onClick={(e) => {
+              router.push("/artists");
+            }}
           >
             <div>
               <GiMicrophone size={["2em"]} />
@@ -123,7 +130,9 @@ const App = () => {
           </li>
           <li
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4`}
-            onClick={(e)=>{router.push("/albums")}} 
+            onClick={(e) => {
+              router.push("/albums");
+            }}
           >
             <div>
               <BiSolidAlbum size={["2em"]} />
@@ -134,7 +143,9 @@ const App = () => {
           </li>
           <li
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4`}
-            onClick={(e)=>{router.push("/songs")}} 
+            onClick={(e) => {
+              router.push("/songs");
+            }}
           >
             <div>
               <IoMusicalNotesSharp size={["2em"]} />
@@ -145,14 +156,14 @@ const App = () => {
           </li>
           <li
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4`}
-            onClick={(e)=>{router.push("/playlists")}}  
-         >
+            onClick={(e) => {
+              router.push("/playlists");
+            }}
+          >
             <div>
-              <RiPlayList2Fill size={["2em"]}   />
-              
+              <RiPlayList2Fill size={["2em"]} />
             </div>
             <span className={`${!open && "hidden"} origin-left duration-200`}>
-              
               Playlists
             </span>
           </li>

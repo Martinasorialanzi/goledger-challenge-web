@@ -1,11 +1,11 @@
-import {Roboto} from 'next/font/google'
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import SideMenu from "@/components/Sidebar";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -19,13 +19,11 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <StoreProvider>
           <div className="flex column-2">
-        <SideMenu/>
-          <main className="flex-1 p-4 overflow-hidden ">
-        {children}
-          </main>
+            <SideMenu />
+            <main className="flex-1 p-4 overflow-hidden ">{children}</main>
           </div>
         </StoreProvider>
-        </body>
+      </body>
     </html>
   );
 }

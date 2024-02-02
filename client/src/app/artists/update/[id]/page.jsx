@@ -55,37 +55,47 @@ const EditArtist = () => {
 
   return (
     <>
-    <div className='grid justify-center align-center'>
-<div className='bg-[rgba(39,39,39,255)] rounded p-6  '>
-      <div className="font-bold m-4 text-[2em]  ">
-        Update Artist
-        <p className="font-light text-[0.8em]">{artist.name}</p>
-      </div>
-      <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4 w-[40em]" >
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="name" value="Artist name" color={"white"}/>
+      <div className="grid justify-center align-center">
+        <div className="bg-[rgba(39,39,39,255)] rounded p-6  ">
+          <div className="font-bold m-4 text-[2em]  ">
+            Update Artist
+            <p className="font-light text-[0.8em]">{artist.name}</p>
           </div>
-          <TextInput type="text" defaultValue={artist.name} required shadow />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="about" color={"white"} value="About" />
-          </div>
-          <TextInput
-            onChange={(e) => {
-              setAbout(e.target.value);
-            }}
-            type="text"
-            required
-            shadow
-            defaultValue={artist.about}
-          />
-        </div>
+          <form
+            onSubmit={handleSubmit}
+            className="flex max-w-md flex-col gap-4 w-[40em]"
+          >
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="name" value="Artist name" color={"white"} />
+              </div>
+              <TextInput
+                type="text"
+                defaultValue={artist.name}
+                required
+                shadow
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="about" color={"white"} value="About" />
+              </div>
+              <TextInput
+                onChange={(e) => {
+                  setAbout(e.target.value);
+                }}
+                type="text"
+                required
+                shadow
+                defaultValue={artist.about}
+              />
+            </div>
 
-        <Button type="submit" className='bg-[rgba(89,91,141,255)]' >Save change</Button>
-      </form>
-      </div>
+            <Button type="submit" className="bg-[rgba(89,91,141,255)]">
+              Save change
+            </Button>
+          </form>
+        </div>
       </div>
     </>
   );

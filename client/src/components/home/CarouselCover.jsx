@@ -7,10 +7,8 @@ const CarouselCover = () => {
         <Carousel indicators={false} leftControl="." rightControl=".">
           <img src="https://wallpapercave.com/wp/wp5566838.jpg" alt="..." />
           <img src="https://images7.alphacoders.com/428/428939.jpg" alt="..." />
-          
         </Carousel>
       </div>
-
     </div>
   );
 };

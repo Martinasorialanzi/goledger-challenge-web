@@ -21,25 +21,30 @@ const AlbumsSection = () => {
 
   return (
     <>
-     <div className='bg-[rgba(39,39,39,255)] p-3 m-4 pb-4 rounded-2xl m-4'>
-     <h1 className='font-bold mt-4 mx-4 mb-2 text-[1.5em]'>Albums</h1>
+      <div className="bg-[rgba(39,39,39,255)] p-3 m-4 pb-4 rounded-2xl m-4">
+        <h1 className="font-bold mt-4 mx-4 mb-2 text-[1.5em]">Albums</h1>
 
-     <a href='/albums' className='grid justify-items-end text-right mx-4 mb-2 my-1 text-[0.8em]'>See more</a>
-      <div className="grid grid-cols-2 gap-3 ">
-        {albums?.map((album, index) => (
-          <Card
-            href="#"
-            className={`grid max-w-sm border-none justify-center ${getBackgroundColorClass(
-              index
-            )}`}
-            key={album["@key"]}
-          >
-            <h5 className="text-[0.9em] font-bold tracking-tight text-white ">
-              {album.title}
-            </h5>
-          </Card>
-        ))}
-      </div>
+        <a
+          href="/albums"
+          className="grid justify-items-end text-right mx-4 mb-2 my-1 text-[0.8em]"
+        >
+          See more
+        </a>
+        <div className="grid grid-cols-2 gap-3 ">
+          {albums?.map((album, index) => (
+            <Card
+              href="#"
+              className={`grid max-w-sm border-none justify-center ${getBackgroundColorClass(
+                index
+              )}`}
+              key={album["@key"]}
+            >
+              <h5 className="text-[0.9em] font-bold tracking-tight text-white ">
+                {album.title}
+              </h5>
+            </Card>
+          ))}
+        </div>
       </div>
     </>
   );

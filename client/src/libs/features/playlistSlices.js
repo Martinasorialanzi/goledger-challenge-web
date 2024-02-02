@@ -6,7 +6,6 @@ export const playlistSlices = createApi({
     baseUrl: "http://ec2-44-204-53-62.compute-1.amazonaws.com",
   }),
   endpoints: (builder) => ({
-    
     getAllPlaylists: builder.query({
       query: () => ({
         url: `/api/query/search`,
@@ -16,17 +15,17 @@ export const playlistSlices = createApi({
             selector: {
               "@assetType": "playlist",
             },
-            fields: ["@key", "name", "description", "songs"]
+            fields: ["@key", "name", "description", "songs"],
           },
         },
       }),
-      providesTags: ['Playlist'],
-      transformResponse:(response)=>{
-        return response.result
-        },
+      providesTags: ["Playlist"],
+      transformResponse: (response) => {
+        return response.result;
+      },
     }),
     getPlaylistById: builder.query({
-      query:(id)=>( {
+      query: (id) => ({
         url: `/api/query/search`,
         method: "POST",
         body: {
@@ -35,44 +34,44 @@ export const playlistSlices = createApi({
               "@assetType": "playlist",
               "@key": id,
             },
-            fields: ["@key", "name", "description", "songs"]
+            fields: ["@key", "name", "description", "songs"],
           },
         },
       }),
-      invalidatesTags: ['Playlist'],
-      transformResponse:(response)=>{
-        return response.result[0]
-        },
+      invalidatesTags: ["Playlist"],
+      transformResponse: (response) => {
+        return response.result[0];
+      },
     }),
     deletePlaylist: builder.mutation({
-      query:(id)=>( {
+      query: (id) => ({
         url: `/api/invoke/deleteAsset`,
         method: "DELETE",
         body: {
-          "key": {
-              "@assetType": "playlist",
-              "@key": id,
+          key: {
+            "@assetType": "playlist",
+            "@key": id,
           },
         },
       }),
-      invalidatesTags: ['Playlist'],
+      invalidatesTags: ["Playlist"],
     }),
     updatePlaylist: builder.mutation({
-      query:(dataPlaylist)=>( {
+      query: (dataPlaylist) => ({
         url: `/api/invoke/updateAsset`,
         method: "PUT",
         body: dataPlaylist,
       }),
-      invalidatesTags: ['Playlist'],
+      invalidatesTags: ["Playlist"],
     }),
 
     createPlaylist: builder.mutation({
-      query:(newPlaylist)=>({
+      query: (newPlaylist) => ({
         url: `/api/invoke/createAsset`,
         method: "POST",
         body: newPlaylist,
       }),
-      invalidatesTags: ['Playlist'],
+      invalidatesTags: ["Playlist"],
     }),
   }),
 });
@@ -83,4 +82,4 @@ export const {
   useDeletePlaylistMutation,
   useUpdatePlaylistMutation,
   useCreatePlaylistMutation,
-} = playlistSlices; 
+} = playlistSlices;

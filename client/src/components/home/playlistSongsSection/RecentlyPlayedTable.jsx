@@ -5,7 +5,6 @@ import { useGetSongByIdQuery } from "@/libs/features/songSlices";
 import { Checkbox, Table } from "flowbite-react";
 import { AiOutlinePlaySquare } from "react-icons/ai";
 
-
 const RecentlyPlayedTable = () => {
   const { data: playlist } = useGetPlaylistByIdQuery(
     "playlist:235b7176-602d-5f20-9e44-e7be9d0feae2"
@@ -18,16 +17,18 @@ const RecentlyPlayedTable = () => {
           A playlist Made for You
         </h1>
 
-        <Table  className="bg-[rgba(23,23,23,255)]">
+        <Table className="bg-[rgba(23,23,23,255)]">
           <Table.Body className="divide-y bg-[rgba(23,23,23,255)] border-gray-700 px-1 text-white ">
             {playlist?.songs?.map((song, index = 0) => (
-              <Table.Row key={song["@key"]} className="bg-[rgba(23,23,23,255)] text-white border-gray-400 ">
+              <Table.Row
+                key={song["@key"]}
+                className="bg-[rgba(23,23,23,255)] text-white border-gray-400 "
+              >
                 <Table.Cell className="p-4">
                   <p>{index + 1}</p>
                 </Table.Cell>
                 <Table.Cell className=" ">
-                <AiOutlinePlaySquare size={["3em"]}/>
-
+                  <AiOutlinePlaySquare size={["3em"]} />
                 </Table.Cell>
                 <Table.Cell className=" text-white whitespace-nowrap font-medium dark:text-whites">
                   <p> {<SongNameRenderer songKey={song["@key"]} />} </p>

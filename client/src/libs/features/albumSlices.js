@@ -91,15 +91,17 @@ export const albumSlices = createApi({
     }),
 
     createAlbum: builder.mutation({
-      query: (artistKey,title,date) => ({
+      query: (artistKey, title, date) => ({
         url: `/api/invoke/createAsset`,
         method: "POST",
         body: {
-            "asset":[{
-              "@assetType":"album",
-              "artist":{artistKey},
-              "title":title,
-              "releaseDate":date}
+          asset: [
+            {
+              "@assetType": "album",
+              artist: { artistKey },
+              title: title,
+              releaseDate: date,
+            },
           ],
         },
       }),

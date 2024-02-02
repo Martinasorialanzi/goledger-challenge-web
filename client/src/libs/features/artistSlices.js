@@ -77,30 +77,33 @@ export const artistSlices = createApi({
       invalidatesTags: ["Artist"],
     }),
     updateArtist: builder.mutation({
-      query: (artistId,nameArtist,aboutArtist) => ({
+      query: (artistId, nameArtist, aboutArtist) => ({
         url: `/api/invoke/updateAsset`,
         method: "PUT",
-        body: 
-        { "update":
-          {"@assetType":"artist",
-          "@key":artistId,
-          "about":aboutArtist,
-          "name":nameArtist, 
-        }
+        body: {
+          update: {
+            "@assetType": "artist",
+            "@key": artistId,
+            about: aboutArtist,
+            name: nameArtist,
+          },
         },
       }),
       invalidatesTags: ["Artist"],
     }),
 
     createArtist: builder.mutation({
-      query: (nameArtist,about) => ({
+      query: (nameArtist, about) => ({
         url: `/api/invoke/createAsset`,
         method: "POST",
-        body:
-          {"asset":[{
-            "@assetType":"artist",
-            "name":nameArtist, 
-            "about":about}]
+        body: {
+          asset: [
+            {
+              "@assetType": "artist",
+              name: nameArtist,
+              about: about,
+            },
+          ],
         },
       }),
       invalidatesTags: ["Artist"],
