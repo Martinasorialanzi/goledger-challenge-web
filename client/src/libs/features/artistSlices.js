@@ -80,8 +80,8 @@ export const artistSlices = createApi({
       query: (artistId,nameArtist,aboutArtist) => ({
         url: `/api/invoke/updateAsset`,
         method: "PUT",
-        body: {
-          update:
+        body: 
+        { "update":
           {"@assetType":"artist",
           "@key":artistId,
           "about":aboutArtist,

@@ -1,27 +1,26 @@
-"use client"
-import { useState } from 'react';
-import { useCreateArtistMutation, useGetArtistByIdQuery, useUpdateArtistMutation } from '@/libs/features/artistSlices';
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { useParams } from 'next/navigation';
+"use client";
+import { useState } from "react";
+import {
+  useCreateArtistMutation,
+  useGetArtistByIdQuery,
+  useUpdateArtistMutation,
+} from "@/libs/features/artistSlices";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { useParams } from "next/navigation";
 import Swal from "sweetalert2";
 
-
-
-
 const EditArtist = () => {
-  const id=useParams()
+  const id = useParams();
   const artistId = decodeURIComponent(String(id.id));
-  const [name,setName]=useState("");
-  const [about,setAbout]=useState("")
-  
-  const [updateArtist,{isLoading:isUpdating}]=useUpdateArtistMutation()
-  const [createArtist]=useCreateArtistMutation()
-  const {data:artist,isLoading,isError}=useGetArtistByIdQuery(artistId)
-  if (isLoading) return <div>Loading...</div>;
-	
-	
-  if (isUpdating) return <div>Loading...</div>;
+  const [name, setName] = useState("");
+  const [about, setAbout] = useState("");
 
+  const [updateArtist, { isLoading: isUpdating }] = useUpdateArtistMutation();
+  const [createArtist] = useCreateArtistMutation();
+  const { data: artist, isLoading, isError } = useGetArtistByIdQuery(artistId);
+  if (isLoading) return <div>Loading...</div>;
+
+  if (isUpdating) return <div>Loading...</div>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,11 +40,8 @@ const EditArtist = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-       
 
-        updateArtist(artistId,name,about)
-  
-        
+        updateArtist(artistId, name, about);
       } else if (result.isDenied) {
         Swal.fire({
           icon: "info",
@@ -57,32 +53,42 @@ const EditArtist = () => {
     });
   };
 
-
-
-
   return (
-<>
-    <div className="font-bold m-4 text-[2em] ">Update Artist 
-    <p className="font-medium">{artist.name}</p>
-    </div>
-    <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
-    <div>
-      <div className="mb-2 block">
-        <Label htmlFor="name" value="Artist name" />
+    <>
+    <div className='grid justify-center align-center'>
+<div className='bg-white  rounded p-6  '>
+      <div className="font-bold m-4 text-[2em]  ">
+        Update Artist
+        <p className="font-light text-[0.8em]">{artist.name}</p>
       </div>
-      <TextInput type="text"  defaultValue={artist.name} required shadow />
-    </div>
-    <div>
-      <div className="mb-2 block">
-        <Label htmlFor="about" value="About"  />
-      </div>
-      <TextInput onChange={(e)=>{setAbout(e.target.value)}}  type="text" required shadow defaultValue={artist.about}/>
-    </div>
-   
-    <Button type="submit">Save change</Button>
-  </form>
-  </>
-  )
-}
+      <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4 w-[40em]" >
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="name" value="Artist name" />
+          </div>
+          <TextInput type="text" defaultValue={artist.name} required shadow />
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="about" value="About" />
+          </div>
+          <TextInput
+            onChange={(e) => {
+              setAbout(e.target.value);
+            }}
+            type="text"
+            required
+            shadow
+            defaultValue={artist.about}
+          />
+        </div>
 
-export default EditArtist
+        <Button type="submit" className='bg-[rgba(89,91,141,255)]' >Save change</Button>
+      </form>
+      </div>
+      </div>
+    </>
+  );
+};
+
+export default EditArtist;

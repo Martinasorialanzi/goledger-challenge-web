@@ -59,9 +59,11 @@ const [aboutArtist,setAboutArtist]=useState("")
 
   return (
 <>
+<div className='grid justify-center align-center'>
+<div className='bg-white  rounded p-6  '>
     <div className="font-bold m-4 text-[2em] ">Create Artist 
     </div>
-    <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex  flex-col gap-4 w-[40em]">
     <div>
       <div className="mb-2 block">
         <Label htmlFor="name" value="Artist name" />
@@ -75,8 +77,10 @@ const [aboutArtist,setAboutArtist]=useState("")
       <TextInput onChange={(e)=>{setAboutArtist(e.target.value)}}  type="text" required shadow defaultValue={aboutArtist}/>
     </div>
    
-    <Button type="submit">Save change</Button>
+    <Button type="submit" className='bg-[rgba(89,91,141,255)] '>Save change</Button>
   </form>
+  </div>
+</div>
   </>
   )
 }

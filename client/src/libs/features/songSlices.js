@@ -18,7 +18,7 @@ export const songSlices = createApi({
             selector: {
               "@assetType": "song",
             },
-            fields:["title","@key","album.@key","artists", "explicit"]
+            fields:["title","@key","album.@key","artists.0.@key", "explicit"]
           },
         },
       }),
@@ -28,6 +28,8 @@ export const songSlices = createApi({
         
         },
     }),
+
+
 
     getSongs: builder.query({
       query: () => ({

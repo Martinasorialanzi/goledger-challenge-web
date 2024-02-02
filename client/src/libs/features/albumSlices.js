@@ -6,7 +6,6 @@ export const albumSlices = createApi({
     baseUrl: "http://ec2-44-204-53-62.compute-1.amazonaws.com",
   }),
   endpoints: (builder) => ({
-    
     getAllAlbums: builder.query({
       query: () => ({
         url: `/api/query/search`,
@@ -20,11 +19,10 @@ export const albumSlices = createApi({
           },
         },
       }),
-      providesTags: ['Album'],
-      transformResponse:(response)=>{
-        return response.result
-        
-        },
+      providesTags: ["Album"],
+      transformResponse: (response) => {
+        return response.result;
+      },
     }),
     getAlbums: builder.query({
       query: () => ({
@@ -36,20 +34,18 @@ export const albumSlices = createApi({
               "@assetType": "album",
             },
             fields: ["@key", "title", "artists", "explicit"],
-            limit:6,
+            limit: 6,
           },
         },
       }),
-      providesTags: ['Album'],
-      transformResponse:(response)=>{
-        return response.result
-        
-        },
-     
+      providesTags: ["Album"],
+      transformResponse: (response) => {
+        return response.result;
+      },
     }),
     getAlbumById: builder.query({
-      query:(id)=>( {
-        url: `/api/query/readAsset`,
+      query: (id) => ({
+        url: `/api/query/search`,
         method: "POST",
         body: {
           query: {
@@ -57,41 +53,57 @@ export const albumSlices = createApi({
               "@assetType": "album",
               "@key": id,
             },
-            fields: ["@key", "title", "artists", "explicit"]
+            fields: ["@key", "title", "artist.@key", "explicit"],
           },
         },
       }),
-      invalidatesTags: ['Album'],
+      invalidatesTags: ["Album"],
+      transformResponse: (response) => {
+        return response.result[0];
+      },
     }),
     deleteAlbum: builder.mutation({
-      query:(id)=>( {
+      query: (id) => ({
         url: `/api/invoke/deleteAsset`,
         method: "DELETE",
         body: {
-          "key": {
-              "@assetType": "album",
-              "@key": id,
+          key: {
+            "@assetType": "album",
+            "@key": id,
           },
         },
       }),
-      invalidatesTags: ['Album'],
+      invalidatesTags: ["Album"],
     }),
     updateAlbum: builder.mutation({
-      query:(dataAlbum)=>( {
+      query: (dataAlbum) => ({
         url: `/api/invoke/updateAsset`,
         method: "PUT",
-        body: dataAlbum,
+        body: {
+          update: {
+            "@assetType": "album",
+            "@key": artistId,
+            title: titleAlbum,
+          },
+        },
       }),
-      invalidatesTags: ['Album'],
+      invalidatesTags: ["Album"],
     }),
 
     createAlbum: builder.mutation({
-      query: (newAlbum)=>( {
+      query: (artistKey,title,date) => ({
         url: `/api/invoke/createAsset`,
         method: "POST",
-        body: newAlbum,
+        body: {
+            "asset":[{
+              "@assetType":"album",
+              "artist":{artistKey},
+              "title":title,
+              "releaseDate":date}
+          ],
+        },
       }),
-      invalidatesTags: ['Album'],
+      invalidatesTags: ["Album"],
     }),
   }),
 });
@@ -103,4 +115,4 @@ export const {
   useDeleteAlbumMutation,
   useUpdateAlbumMutation,
   useCreateAlbumMutation,
-} = albumSlices; 
+} = albumSlices;
